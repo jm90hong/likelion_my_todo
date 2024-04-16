@@ -1,0 +1,46 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">	
+	 		
+	 		
+	 <insert id="save" parameterType="User">
+	 	INSERT INTO user
+	 	(
+	 		user_code,
+	 		id,
+	 		pw,
+	 		nickname,
+	 		created_date
+	 	)
+	 	VALUES
+	 	(
+	 		#{user_code},
+	 		#{id},
+	 		MD5(#{pw}),
+	 		#{nickname},
+	 		SYSDATE()
+	 	)
+	 </insert>	
+	 
+	 
+	 
+ 	 <select id="findByIdAndPw" parameterType="User" resultType="User">
+ 	 	SELECT * FROM user
+ 	 	WHERE id=#{id} AND pw=MD5(#{pw})
+	 </select>	
+	 
+	 <select id="findById" parameterType="String" resultType="User">
+ 	 	SELECT * FROM user
+ 	 	WHERE id=#{id}
+	 </select>	
+	 
+	 <select id="findByNickname" parameterType="String" resultType="User">
+ 	 	SELECT * FROM user
+ 	 	WHERE nickname=#{nickname}
+	 </select>	
+	 
+	 	
+	 
+	 
+	 		
+	
+</mapper>
