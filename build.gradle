@@ -1,15 +1,15 @@
 plugins {
 	id 'java'
 	id 'war'
-	id 'org.springframework.boot' version '2.7.18'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.my'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '11'
+	sourceCompatibility = '17'
 }
 
 repositories {
@@ -21,14 +21,20 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
-	implementation 'javax.servlet:jstl'
-	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 	
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+	//jstl
+	implementation 'jakarta.servlet:jakarta.servlet-api'
+	implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+	implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl' 
+		
+	//tomcat-jsp
+	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '10.1.19'
 	
-	//mariadb(선택)
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
-	
+	//mybatis 
+	implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter'  version: '3.0.2'
+
+	//mariadb
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.3.2'
 }
 
 tasks.named('test') {

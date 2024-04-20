@@ -2,8 +2,6 @@ package com.my.likelion_my_todo.controller;
 
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.my.likelion_my_todo.service.UserService;
 import com.my.likelion_my_todo.vo.User;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping(value="user")
